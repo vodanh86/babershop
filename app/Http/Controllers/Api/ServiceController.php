@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Configuration;
-use App\Http\Resources\ConfigurationResource;
+use App\Models\Service;
+use App\Http\Resources\ServiceResourceCollection;
+use App\Http\Resources\ServiceResource;
 use Illuminate\Http\Request;
 
-class ConfigurationController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,8 @@ class ConfigurationController extends Controller
      */
     public function index()
     {
-        $configurations = Configuration::all();
-        return (new ConfigurationResource($configurations))->response();
+        $services = Service::all();
+        return (new ServiceResourceCollection($services))->response();
     }
 
     /**
@@ -34,10 +35,10 @@ class ConfigurationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Configuration  $configuration
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function show(Configuration $configuration)
+    public function show(Service $service)
     {
         //
     }
@@ -46,10 +47,10 @@ class ConfigurationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Configuration  $configuration
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Configuration $configuration)
+    public function update(Request $request, Service $service)
     {
         //
     }
@@ -57,10 +58,10 @@ class ConfigurationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Configuration  $configuration
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Configuration $configuration)
+    public function destroy(Service $service)
     {
         //
     }

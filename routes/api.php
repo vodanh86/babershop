@@ -3,12 +3,13 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Api\SupportedModelController;
-use App\Http\Controllers\Api\ShippingCompanyController;
-use App\Http\Controllers\Api\PriceController;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ServiceController;
+use App\Http\Controllers\Api\HairStylistController;
+use App\Http\Controllers\Api\NewsController;
+use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\BillController;
 use App\Http\Controllers\Api\OrderController;
-use App\Http\Controllers\Api\BankController;
-use App\Http\Controllers\Api\ConfigurationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +25,11 @@ use App\Http\Controllers\Api\ConfigurationController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('supportedModels', SupportedModelController::class);
-Route::apiResource('shippingCompanies', ShippingCompanyController::class);
-Route::apiResource('banks', BankController::class);
-Route::apiResource('configurations', ConfigurationController::class);
-Route::post('supportedModels/check', [SupportedModelController::class, 'check'])->name('supportedModel.check');
-Route::post('prices/check', [PriceController::class, 'check'])->name('prices.check');
-Route::post('orders', [OrderController::class, 'store'])->name('orders.store');
-Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+Route::post('user/register', [AuthController::class, 'register']);
+Route::post('user/login', [AuthController::class, 'login']);
+Route::apiResource('services', ServiceController::class);
+Route::apiResource('hairStylists', HairStylistController::class);
+Route::apiResource('news', NewsController::class);
+Route::apiResource('customers', CustomerController::class);
+Route::apiResource('bills', BillController::class);
+Route::apiResource('orders', OrderController::class);

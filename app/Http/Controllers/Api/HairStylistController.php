@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\SupportedModel;
-use App\Models\Price;
+use App\Http\Resources\HairStylistResourceCollection;
+use App\Models\HairStylist;
 use Illuminate\Http\Request;
 
-class PriceController extends Controller
+class HairStylistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,8 @@ class PriceController extends Controller
      */
     public function index()
     {
-        //
+        $stylist = HairStylist::all();
+        return (new HairStylistResourceCollection($stylist))->response();
     }
 
     /**
@@ -25,23 +26,18 @@ class PriceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function check(Request $request)
+    public function store(Request $request)
     {
-        // temporary allow android
-        /*
-        if ($request->get('type') == "Android"){
-            return array("min" => 8, "max" => 19);
-        }*/
-        return Util::checkPrice($request);  
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Price  $price
+     * @param  \App\Models\HairStylist  $hairStylist
      * @return \Illuminate\Http\Response
      */
-    public function show(Price $price)
+    public function show(HairStylist $hairStylist)
     {
         //
     }
@@ -50,10 +46,10 @@ class PriceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Price  $price
+     * @param  \App\Models\HairStylist  $hairStylist
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Price $price)
+    public function update(Request $request, HairStylist $hairStylist)
     {
         //
     }
@@ -61,10 +57,10 @@ class PriceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Price  $price
+     * @param  \App\Models\HairStylist  $hairStylist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Price $price)
+    public function destroy(HairStylist $hairStylist)
     {
         //
     }

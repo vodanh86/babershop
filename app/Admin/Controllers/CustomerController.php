@@ -72,7 +72,6 @@ class CustomerController extends AdminController
 
         $form->text('name', __('Name'));
         $form->text('user_name', __('User name'));
-        $form->password('password', __('Password'));
         $form->date('birth_day', __('Birth day'))->default(date('Y-m-d'));
         $form->text('phone_number', __('Phone number'));
         $form->text('address', __('Address'));

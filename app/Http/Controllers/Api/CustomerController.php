@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Order;
-use App\Http\Resources\OrderResource;
-use App\Http\Resources\OrderResourceCollection;
+use App\Models\Customer;
+use App\Http\Resources\CustomerResource;
+use App\Http\Resources\CustomerResourceCollection;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,12 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
-        return (new OrderResourceCollection($orders))->response();
+        $customers = Customer::all();
+        foreach($customers as $customer){
+            unset($customer["password"]);
+            unset($customer["remember_token"]);
+        }
+        return (new CustomerResourceCollection($customers))->response();
     }
 
     /**
@@ -35,22 +39,24 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Customer $customer)
     {
-        return (new OrderResource($order))->response();
+        unset($customer["password"]);
+        unset($customer["remember_token"]);
+        return (new CustomerResource($customer))->response();
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, Customer $customer)
     {
         //
     }
@@ -58,10 +64,10 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(Customer $customer)
     {
         //
     }

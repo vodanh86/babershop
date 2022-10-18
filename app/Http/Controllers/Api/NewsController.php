@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Bank;
-use App\Http\Resources\BankResource;
+use App\Models\News;
+use App\Http\Resources\NewsResourceCollection;
 use Illuminate\Http\Request;
 
-class BankController extends Controller
+class NewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class BankController extends Controller
      */
     public function index()
     {
-        $banks = Bank::all();
-        return (new BankResource($banks))->response();
+        $news = News::all();
+        return (new NewsResourceCollection($news))->response();
     }
 
     /**
@@ -34,10 +34,10 @@ class BankController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Bank  $bank
+     * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function show(Bank $bank)
+    public function show(News $news)
     {
         //
     }
@@ -46,10 +46,10 @@ class BankController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Bank  $bank
+     * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bank $bank)
+    public function update(Request $request, News $news)
     {
         //
     }
@@ -57,10 +57,10 @@ class BankController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Bank  $bank
+     * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bank $bank)
+    public function destroy(News $news)
     {
         //
     }

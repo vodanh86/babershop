@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\ShippingCompany;
-use App\Http\Resources\ShippingCompanyResource;
+use App\Models\Bill;
+use App\Http\Resources\BillResource;
+use App\Http\Resources\BillResourceCollection;
 use Illuminate\Http\Request;
 
-class ShippingCompanyController extends Controller
+class BillController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,8 @@ class ShippingCompanyController extends Controller
      */
     public function index()
     {
-        $ShippingCompany = ShippingCompany::all();
-        return (new ShippingCompanyResource($ShippingCompany))->response();
+        $bills = Bill::all();
+        return (new BillResourceCollection($bills))->response();
     }
 
     /**
@@ -34,22 +35,22 @@ class ShippingCompanyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ShippingCompany  $shippingCompany
+     * @param  \App\Models\Bill  $bill
      * @return \Illuminate\Http\Response
      */
-    public function show(ShippingCompany $shippingCompany)
+    public function show(Bill $bill)
     {
-        //
+        return (new BillResource($bill))->response();
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ShippingCompany  $shippingCompany
+     * @param  \App\Models\Bill  $bill
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ShippingCompany $shippingCompany)
+    public function update(Request $request, Bill $bill)
     {
         //
     }
@@ -57,10 +58,10 @@ class ShippingCompanyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ShippingCompany  $shippingCompany
+     * @param  \App\Models\Bill  $bill
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ShippingCompany $shippingCompany)
+    public function destroy(Bill $bill)
     {
         //
     }
